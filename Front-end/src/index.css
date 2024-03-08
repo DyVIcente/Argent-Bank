@@ -312,3 +312,21 @@ body {
   background-color: #00bc77;
   color: #fff;
 }
+
+.main-nav-profil {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav-name {
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem; 
+  font-weight: bold;
+  color: #2c3e50;
+}
+.error-message {
+  color: red;
+  margin-top: 5px; 
+}

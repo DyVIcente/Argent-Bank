@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 const Nav = () => {
   const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  const userData = useSelector(state => state.user.userData);
+
   console.log(isAuthenticated);
   return (
     <nav className="main-nav">
@@ -16,10 +18,18 @@ const Nav = () => {
     </a>
     <div>
     {isAuthenticated ? (
+      <div className="main-nav-profil">
+        <div className="main-nav-name">
+        <i className="fa fa-user-circle"></i>
+        {userData?.firstName}
+        </div>
+        <div>
           <a className="main-nav-item" href="/" >
             <i className="fa fa-sign-out"></i>
             Logout
           </a>
+          </div>
+          </div>
         ) : (
           <a className="main-nav-item" href="/sign-in">
             <i className="fa fa-user-circle"></i>

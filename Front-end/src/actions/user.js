@@ -1,6 +1,13 @@
 import { loginUser, fetchUserProfile } from '../reducers/user';
 import axios from 'axios';
 
+/**
+ * Fonction asynchrone pour connecter un utilisateur.
+ *
+ * @param {string} email - L'adresse e-mail de l'utilisateur.
+ * @param {string} password - Le mot de passe de l'utilisateur.
+ * @returns {Function} - Fonction redux-thunk.
+ */
 export const loginUserAsync = (email, password) => async dispatch => {
   try {
     const loginResponse = await axios.post('http://localhost:3001/api/v1/user/login', {
@@ -36,10 +43,18 @@ export const loginUserAsync = (email, password) => async dispatch => {
       console.error('Login failed. Status:', loginResponse.status);
     }
   } catch (error) {
-    console.error('Login error:', error.message);
+    alert('Erreur de connexion: E-mail/Mot de passe incorrect');
   }
 };
 
+/**
+ * Fonction pour mettre à jour le profil utilisateur.
+ *
+ * @param {string} newFirstName - Le nouveau prénom de l'utilisateur.
+ * @param {string} newLastName - Le nouveau nom de l'utilisateur.
+ * @param {string} token - Le jeton d'authentification de l'utilisateur.
+ * @returns {Function} - Fonction redux-thunk.
+ */
 export const updateUserProfile = (newFirstName, newLastName, token) => async dispatch => {
   try {
     const response = await axios.put(
